@@ -1,0 +1,114 @@
+/// @access private
+/// @link https://www.oddbird.net/accoutrement/docs/type.html
+
+/// Defined fonts
+// $fonts: (
+//   "sans": (
+//     "name": "berlingske",
+//     "formats": "woff2",
+//     "normal": "Berlingske",
+//   ),
+//   "primary": "#sans",
+// );
+
+// Import all local fonts
+ @include import-webfonts;
+
+$typography: (
+  'body': (
+    'font': var(--body-text),
+    'size': var(--body-size),
+    'weight': var(--body-weight),
+    'height': var(--body-height),
+    'space': 0,
+  ),
+
+  'body2': (
+    'size': var(--body2-size),
+    'height': var(--body2-height),
+  ),
+  
+  "heading-1": (
+    "size": var(--heading-1-size),
+    "height": var(--heading-1-height),
+    "space": var(--heading-1-space),
+  ),
+  "heading-2": (
+    "size": var(--heading-2-size),
+    "height": var(--heading-2-height),
+    "space": var(--heading-2-space),
+  ),
+  "heading-3": (
+    "size": var(--heading-3-size),
+    "height": var(--heading-3-height),
+    "space": var(--heading-3-space),
+  ),
+  "heading-4": (
+    "size": var(--heading-4-size),
+    "height": var(--heading-4-height),
+    "space": var(--heading-4-space),
+  ),
+  "heading-5": (
+    "size": var(--heading-5-size),
+    "height": var(--heading-5-height),
+    "space": var(--heading-5-space),
+  ),
+  "heading-6": (
+    "size": var(--heading-6-size),
+    "height": var(--heading-6-height),
+    "space": var(--heading-6-space),
+  ),
+
+  'caption': (
+    "size": var(--caption-size),
+    "height": var(--caption-height),
+    "space": var(--caption-space),
+  ),
+
+  'small': (
+    "size": var(--small-size),
+    "height": var(--small-height),
+    "space": var(--small-space),
+  ),
+
+  'buttons': (
+    'size': var(--button-size),
+    'weight': var(--button-weight),
+    "space": 1px,
+  ),
+
+  'button-primary': (),
+  'button-secondary': (),
+  'navigation': (
+    'size': 12px,
+    'weight': 700,
+    'space': 1px
+  ),
+);
+
+/// Set text style.
+/// @param {string} $token - One of keys of $typography map above.
+
+@mixin use-text-style($token: 'body') {
+  $type: get-token($typography, $token);
+
+  @if (get-token($type, 'font') != 'font') {
+    font-family: font-family(get-token($type, 'font'));
+  }
+
+  @if (get-token($type, 'size') != 'size') {
+    font-size: get-token($type, 'size');
+  }
+
+  @if (get-token($type, 'weight') != 'weight') {
+    font-weight: get-token($type, 'weight');
+  }
+
+  @if (get-token($type, 'height') != 'height') {
+    line-height: get-token($type, 'height');
+  }
+
+  @if (get-token($type, 'spacing') != 'spacing') {
+    letter-spacing: get-token($type, 'spacing') * 1rem / 10;
+  }
+}

@@ -1,0 +1,59 @@
+// Design tokens
+@import "./src/design-tokens/index";
+
+$component: '.section';
+
+#{$component}{
+    display: block;
+    padding: 2rem;
+}
+
+
+#{$component}--headings-desk{
+    display: none;
+    @include above('tablet-large'){
+        display: block;
+    }
+}
+
+#{$component}--headings-mob{
+    @include above('tablet-large'){
+        display: none;
+    }
+}
+
+#{$component}__title{
+    margin-bottom: 2rem;
+}
+
+#{$component}__row{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-bottom: 2rem;
+    align-items: center;
+    
+    .row-title{
+        font-size: 14px;
+        letter-spacing: 0;
+    }
+}
+#{$component}__row--buttons{
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.font{
+    font-size: 32px;
+}
+
+.font--berlingske{
+    font-family: var(--berlingske-serif);
+}
+
+.font--artisan-script{
+    font-family: var(--artisan-script);
+}
+
+.headings-script{
+    font-size: 80px;
+    font-family: var(--artisan-script);
+}

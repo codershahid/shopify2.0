@@ -1,0 +1,39 @@
+/*
+ * The file collects all global styles.
+ */
+
+// Core
+@import 'css-variables';
+@import 'typography';
+@import 'layout';
+@import 'forms';
+@import 'buttons';
+
+// Site Header
+@import 'announcement';
+@import 'topbar';
+@import 'header';
+
+// Footer
+@import 'footer';
+
+
+.wrapper{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.above768-only{
+    display: none;
+    @include above('tablet'){display: inherit;}
+}
+
+.above1024-only{
+    display: none;
+    @include above('tablet-large'){display: inherit;}
+}
+
+.above1366-only{
+    display: none;
+    @include above('desktop'){display: inherit;}
+}
