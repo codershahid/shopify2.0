@@ -1,87 +1,118 @@
-.cover {
-  text-align: center;
-  .cover-text {
-    text-align: center;
-    max-width: 450px;
-    margin: auto;
+$component: '.hero';
 
-    @include above('tablet-large') {
-      max-width: 385px;
-      text-align: left;
-    }
-    h1 {
-      line-height: 2rem;
-      font-size: 2rem;
+#{$component}{
+  padding-bottom: rem(48px);
 
-      @include above('tablet-large') {
-        line-height: 3rem;
-        font-size: 2.5rem;
-      }
-    }
+  @include above('tablet-large'){
+    padding-bottom: rem(96rem);
+  }
+}
+
+#{$component}__inner{
+  position: relative;
+}
+
+#{$component}__overlay:after{
+  @include above('tablet-large'){
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#{$component}__picture{
+  display: block;
+}
+
+#{$component}__content{
+  @include above('tablet-large'){
+    position: absolute;
+    bottom: 9rem;
+    color: #fff;
+  }
+}
+
+#{$component}__content--left{
+  @include above('tablet-large'){
+    left: 0;
+  }
+}
+
+#{$component}__content--center{
+  @include above('tablet-large'){
+    left: 0;
+    right: 0;
+  }
+}
+
+#{$component}__content--right{
+  @include above('tablet-large'){
+    right: 0;
+  }
+}
+
+#{$component}__container{
+  width: max-content;
+  padding-top: 1rem;
+
+  @include above('tablet-large'){
+    padding-top: 0;
+  }
+}
+
+#{$component}__title{
+  text-transform: uppercase;
+  padding-bottom: 0.25rem;
+
+  @include above('tablet-large'){
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: .09375rem;
+  }
+}
+
+#{$component}__heading{
+  
+  @include above('tablet-large'){
+    font-size: 3.5rem;
+    line-height: 4rem;
   }
 
-  .reviews {
-    @include margin(null, null, 1rem, null);
-  }
 
-  .cover-image {
-    @include below ('tablet-large') {
-      @include margin(2rem, null, null, null);
+  strong{
+    display: block;
+
+    @include above('tablet-large'){
+      display: initial;
     }
   }
+}
 
-  &.front-page {
-    @include padding(8rem, 1rem, 4rem, 1rem);
+#{$component}__btn{
+  padding-top: 1rem;
 
-    background-image: url('./hero-fs.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    background-color: color('sand');
-
-    @include above('tablet-large') {
-      @include padding(12rem, 2rem, 8rem, 2rem);
-
-      background-position: center;
-    }
+  @include above('tablet-large'){
+    padding-top: 2rem;
   }
+}
 
-  &.collections,
-  &.about {
-    @include padding(4rem, 1rem, 4rem, 1rem);
+#{$component}__btn-link{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
-    border-bottom: 1px solid color('light-grey');
+  svg{
+    color: color('white');
+  }
+}
 
-    @include above('tablet-large') {
-      border-bottom: none;
-      padding: 0;
-    }
+#{$component}__btn-text{
+  font-size: rem(10px);
 
-    .container-fluid {
-      padding: 0;
-      .row,
-      .col {
-        margin: 0;
-      }
-    }
-    .cover-image {
-      display: none;
-
-      @include above('tablet-large') {
-        display: block;
-        img {
-          width: 100%;
-        }
-      }
-    }
-
-    .cover-text {
-      h1 {
-        @include above('tablet-large') {
-          line-height: 3.5rem;
-          font-size: 3.1rem;
-        }
-      }
-    }
+  @include above('tablet-large'){
+    font-size: rem(12px);
   }
 }

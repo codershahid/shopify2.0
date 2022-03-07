@@ -1,9 +1,10 @@
 .btn,
 button,
 input[type="button"] {
+
   display: grid;
   grid-template-columns: auto auto;
-  column-gap: 1.2rem;
+  column-gap: .8rem;
   padding: 14px 23px;
   width: max-content;
   border: 1px solid transparent;
@@ -12,20 +13,18 @@ input[type="button"] {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
   @include use-text-style('buttons');
   letter-spacing: 2px;
   color: color('black');
 
   transition: all 0.5s ease-in-out;
   cursor: pointer;
-  
-  & svg{
-    // margin-left: 1rem;
-  }
 
   @include above('tablet-large'){
     padding: 16px 32px;
@@ -42,8 +41,8 @@ input[type="button"] {
 }
 
 .btn-default {
-  color: color('white');
-  background-color: color('olive');
+  color: color('black');
+  background-color: color('grey');
 }
 
 .btn-link {

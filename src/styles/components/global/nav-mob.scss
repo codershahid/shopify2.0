@@ -1,0 +1,145 @@
+$component: ".mobileNav";
+
+#{$component} {
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  width: 288px;
+  background-color: #fff;
+  min-height: calc(100vh - 122px);
+  overflow: auto;
+  padding-top: rem(20px);
+  z-index: -1;
+  transform: translateX(-280px);
+  pointer-events: none;
+  transition: transform ease 1s, opacity ease 1s;
+  opacity: 0;
+
+  .nav--open & {
+    z-index: 10;
+    opacity: 1;
+    transition: transform ease 0.5s, opacity ease 0.5s;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+#{$component}__item {
+  padding: rem(12px) 0;
+  display: block;
+  line-height: 0;
+  &--hasSubnav {
+    margin-top: 8px;
+    ~ #{$component}__item {
+      margin-top: 0;
+    }
+  }
+
+  &--divider {
+    margin-top: rem(28px);
+    padding-top: rem(40px);
+    border-top: 1px solid color('rose');
+    margin-right: rem(16px);
+  }
+
+  span{
+    display: inline-block;
+    font-size: .8125rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .0625rem;
+    font-weight: 200;
+  }
+}
+
+#{$component}__link {
+  color: color("mink");
+  font-size: rem(13px);
+  letter-spacing: rem(2px);
+  line-height: rem(13px);
+  text-transform: uppercase;
+  font-weight: 400;
+  pointer-events: all;
+}
+
+#{$component}__text {
+  color: color("mink");
+  font-size: rem(13px);
+  letter-spacing: rem(1px);
+  line-height: rem(13px);
+}
+
+#{$component}__list {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+#{$component}__title {
+  color: color("mink");
+  font-size: rem(13px);
+  letter-spacing: rem(1px);
+  line-height: rem(13px);
+  font-weight: 500;
+  text-transform: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+#{$component}__subnav {
+  padding-left: 16px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  max-width: 100%;
+  margin-right: 16px;
+}
+
+#{$component}__subnavList {
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  padding-top: rem(20px);
+  padding-left: rem(16px);
+  padding-right: rem(16px);
+  z-index: 10;
+  transform: translateX(-280px);
+  transition: transform ease 0.5s;
+
+  &.is--active {
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+#{$component}__subnavItem {
+  padding-left: rem(40px);
+  &--back {
+    padding-left: 0;
+    svg {
+      transform: rotate(180deg);
+      margin-right: 12px;
+    }
+  }
+  &--title {
+    padding-left: 24px;
+  }
+
+  #{$component}__link {
+    letter-spacing: 0;
+    text-transform: none;
+    pointer-events: all;
+  }
+}
+
+[data-target] {
+  cursor: pointer;
+}
+
+
+.icon--close{display: none}
+body.nav--open {
+  .icon--menu{display: none}
+  .icon--close{display: block}
+}

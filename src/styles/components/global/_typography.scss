@@ -38,7 +38,7 @@ body {
 // }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: var(--BerlingskeSerif);
+    font-family: var(--berlingske-serif);
     font-weight: var(--heading-weight); 
 }
 
@@ -99,13 +99,14 @@ dl {
 }
 
 a {
-  color: color('link');
-  text-decoration: underline;
+  color: color('black');
+  text-decoration: none;
   background-color: transparent; // Remove the gray background on active links in IE 10.
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+  cursor: pointer;
 
   &:hover {
-    color: color('link-hover');
+    // color: color('link-hover');
   }
 }
 

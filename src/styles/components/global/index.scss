@@ -11,7 +11,6 @@
 
 // Site Header
 @import 'announcement';
-@import 'topbar';
 @import 'header';
 
 // Footer
@@ -36,4 +35,37 @@
 .above1366-only{
     display: none;
     @include above('desktop'){display: inherit;}
+}
+
+.below768-only{
+    display: none;
+    @include below('tablet'){display: inherit;}
+}
+
+.below1024-only{
+    display: none;
+    @include below('tablet-large'){display: inherit;}
+}
+
+.below1366-only{
+    display: none;
+    @include below('desktop'){display: inherit;}
+}
+
+.container{
+    padding: 0 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+
+    @include above('tablet'){
+        padding: 0 2.25rem;
+    }
+
+    @include above('tablet-large'){
+       padding: 0 2.75rem;
+    }
+
+    @include above('desktop'){
+       padding: 0 4rem;
+    }
 }

@@ -13,13 +13,16 @@ import 'lazysizes/plugins/respimg/ls.respimg';
 import 'Styles/layout/theme.scss';
 
 import mobileNavigation from '../components/mobile-navigation';
+import deskNavigation from '../components/nav-desk';
 import headerSearch from '../components/header-search';
 import ajaxSearch from '../components/ajax-search';
 
 mobileNavigation()
+deskNavigation()
 headerSearch()
 ajaxSearch()
 
 window.headerSearch.init();
 window.mobileNavigation.init();
+window.deskNavigation.init();
 window.ajaxSearch.init();

@@ -13,13 +13,13 @@ export default() => {
     }
 
     const bindUIActions = () => {
-      dom.searchWindowTrigger.forEach(e => e.addEventListener('click', toggleSearchWindow));
-      dom.closeSearchWindow.addEventListener('click', searchWindowClose);
+      dom.searchWindowTrigger?.forEach(e => e.addEventListener('click', toggleSearchWindow));
+      dom.closeSearchWindow?.addEventListener('click', searchWindowClose);
     }
 
     const toggleSearchWindow = () => {
-      dom.searchWindow.classList.toggle('active');
-      if (dom.searchWindow.classList.contains('active')) {
+      dom.searchWindow?.classList.toggle('active');
+      if (dom.searchWindow?.classList.contains('active')) {
         dom.searchInput.focus();
       } else {
         dom.searchInput.blur();
@@ -27,7 +27,7 @@ export default() => {
     }
 
     const searchWindowClose = () => {
-      dom.searchWindow.classList.remove('active');
+      dom.searchWindow?.classList.remove('active');
     }
 
     const init = () => {
