@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+<div class="wrapper__ls">
+  <div class="timeless section__timeless">
+    <h2 class="timeless__title">{{ section.settings.section_title }}</h2>
+    <div class="timeless__blocks">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <picture class="timeless__picture">
+                <source media="(max-width:639px)" srcset="{{ block.settings.img_mob | img_url: 'master' }}">
+                <source media="(min-width:640px)" srcset="{{ block.settings.img_desk | img_url: 'master' }}">
+                <img src="{{ block.settings.img_mob | img_url: '1x' }}" alt="SS">
+              </picture>
+              <a href="{{ block.settings.cta_link }}" class="timeless__cta btn btn-link">
+                <span>{{ block.settings.cta }} </span>
+                {% render 'icons',icon:'arrow-right--large'%}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev timeless__arrow timeless__arrow--left">{% render 'icons',icon:'arrow-left--slider'%}</div>
+          <div class="swiper-button-next timeless__arrow timeless__arrow--right">{% render 'icons',icon:'arrow-right--slider'%}</div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name":"Timeless",
+  "settings": [
+    {
+      "type": "html",
+      "id" : "section_title",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "intro",
+      "name" : "Intro Block",
+      "settings" :[
+        {
+            "type": "image_picker",
+            "id" : "img_desk",
+            "label": "Block Image Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id" : "img_mob",
+            "label": "Block Image Mobile"
+        },
+        {
+          "type": "text",
+          "id" : "cta",
+          "label": "Block CTA",
+          "default": "Shop"
+        },
+        {
+          "type": "url",
+          "id" : "cta_link",
+          "label": "Block CTA Link"
+        }
+      ]
+    }
+  ]
+} 
+{% endschema %} 
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 1.6,
+    spaceBetween: 30,
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    // screen >= 1024px
+    1024: {
+      slidesPerView: 3.6,
+    }
+  }
+});
+</script>

@@ -45,15 +45,19 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
-  
   {% section 'header' %}
-  <main role="main">
+  <main role="main wrapper__ls">
     {{ content_for_layout }}
   </main>
   {% section 'footer' %}
-
   {% render 'script-bundle', layout: 'theme' %}
-
 </body>
 
 </html>
+
+<style>
+  .wrapper__ls{
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+</style>

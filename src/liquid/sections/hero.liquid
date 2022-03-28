@@ -5,7 +5,7 @@
 {% assign opacityWithEndBracket = ', ' | append: opacity | append: ')' %}       
 {% assign rgba = color | replace: 'rgb', 'rgba' | replace:')', opacityWithEndBracket %}
 
-<section class="hero">
+<div class="hero  wrapper__ls">
   <div class="hero__inner">
     <a class="hero__overlay {% if sec.enable_overlay != blank %}hero__overlay--shown {% endif %}" href="https://www.shopsocietysocial.com/collections/new">
       <picture class="hero__picture">
@@ -18,7 +18,6 @@
       <div class="container hero__container">
         <p class="hero__title caption">{{ sec.title }}</p>
         <h2 class="hero__heading">{{ sec.heading }}</h2>
-        <h6> {{ rgba }}{{ align }}</h6>
         <div class="hero__btn">
           <a href="#" class="btn btn-default hero__btn-link">
             {%- render 'icons', icon:'btn-arrow' -%} 
@@ -28,7 +27,7 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {

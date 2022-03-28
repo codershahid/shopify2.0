@@ -13,9 +13,17 @@
 @import 'announcement';
 @import 'header';
 
+@import 'introduction';
+@import 'timeless';
+
 // Footer
 @import 'footer';
 
+
+.wrapper__ls{
+    max-width: 1920px;
+    margin: 0 auto;
+}
 
 .wrapper{
     max-width: 1440px;

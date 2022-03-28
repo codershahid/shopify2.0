@@ -1,0 +1,77 @@
+$component: '.intro';
+
+#{$component}{
+   position: relative;
+}
+
+#{$component}__blocks{
+   margin-bottom: 4rem;
+
+   @include above('tablet-large'){
+      display: grid;
+      grid-column-gap: 2rem;
+      grid-template-columns: 41% auto;
+      grid-template-areas: 
+      "left right"
+      "left right";
+   }
+}
+
+#{$component}__block--left{
+    grid-area: left;
+    margin-bottom: 2rem;
+    @include above('tablet-large'){
+      margin-bottom: 0;
+   }
+}
+
+#{$component}__block--right{ 
+   padding-right: 2rem;
+
+   @include above('tablet-large'){
+      padding-right: 4rem;
+   }
+   &:not(:last-child){
+      margin-bottom: 2rem;
+   }
+}
+
+#{$component}__content{ 
+   padding: 1rem 0 0 2rem;
+   
+   @include above('tablet-large'){
+      padding: 2rem 0 0 4rem;
+   }
+}
+
+#{$component}__heading{
+   margin-bottom: 1rem;
+}
+#{$component}__cta{
+   margin-top: 2rem;
+}
+
+#{$component}__script{ 
+   display: none;
+   position: absolute;
+   z-index: -1;
+   bottom: 8rem;
+   font-size: 8.5rem;
+   font-weight: 400;
+   font-family: var(--artisan-script);
+   color: color('pastel-blue');
+
+   @include above('tablet-large'){
+      display: block;
+   }
+
+   @include above('desktop'){
+      bottom: 9rem; 
+      font-size: 10.5rem;
+   }
+
+   @include above('desktop-large'){
+      bottom: 10rem;
+      font-size: 13.5rem;
+   }
+}

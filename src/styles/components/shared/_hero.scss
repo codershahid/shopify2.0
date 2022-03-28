@@ -57,6 +57,7 @@ $component: '.hero';
 #{$component}__container{
   width: max-content;
   padding-top: 1rem;
+  margin: 0;
 
   @include above('tablet-large'){
     padding-top: 0;

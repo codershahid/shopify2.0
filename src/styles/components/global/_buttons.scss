@@ -46,13 +46,31 @@ input[type="button"] {
 }
 
 .btn-link {
-  display: flex;
-  flex-direction: column;
-  color: color('black');
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
   transition: all ease-in 1s;
+  
+  font-size: var(--link-size);
+  font-weight: var(--link-weight);
+  color: color('black');
+
+  span{
+    display: block;
+    white-space: unset;
+  }
+
+  svg{
+    transition: all ease .3s;
+  }
 
   &:hover{
-    align-items: flex-end;
+    svg{
+      position: relative;
+      right: 0;
+      transform: translateX(100%);
+    }
   } 
 }
 
