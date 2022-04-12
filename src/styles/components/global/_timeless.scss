@@ -2,6 +2,10 @@ $component: '.timeless';
 
 #{$component}{
    position: relative;
+   margin-bottom: 4rem;
+   @include above('tablet-large'){
+      margin-bottom: 6rem;
+   }
 }
 #{$component}__title{
    padding-top: 2rem;
@@ -31,25 +35,6 @@ $component: '.timeless';
    }
 }
 
-.swiper-wrapper{
-   padding-bottom: 4.1875rem;
-   padding-left: 4rem;
-   
-}
-
-
-.swiper-button-prev:after, .swiper-button-next:after {
-   content: "" !important;
-}
-
-.swiper-button-prev.swiper-button-disabled {
-   display: none;
-}
-
-.swiper-button-next.swiper-button-disabled {
-   display: none;
-}
-
 #{$component} #{$component}__arrow{ 
    width: 4.5rem;
    height: 4.5rem;
@@ -71,5 +56,24 @@ $component: '.timeless';
    svg{
       position: relative;
       right: 1.125rem;
+   }
+}
+
+#{$component}{
+   .swiper-wrapper{
+      padding-bottom: 4.1875rem;
+      padding-left: 4rem;
+   }
+
+   .swiper-button-prev:after, .swiper-button-next:after {
+      content: "" !important;
+   }
+   
+   .swiper-button-prev.swiper-button-disabled {
+      display: none;
+   }
+   
+   .swiper-button-next.swiper-button-disabled {
+      display: none;
    }
 }
