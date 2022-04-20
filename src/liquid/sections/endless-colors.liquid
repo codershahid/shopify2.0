@@ -24,8 +24,8 @@
               </div>
             {% endfor %}
           </div>
-          <div class="swiper-button-prev colors__arrow colors__arrow--left">{% render 'icons',icon:'arrow-left--slider'%}</div>
-          <div class="swiper-button-next colors__arrow colors__arrow--right">{% render 'icons',icon:'arrow-right--slider'%}</div>
+          <div class="swiper-button-prev colors__arrow colors__arrow--left">{% render 'icons',icon:'arrow-lessthan'%}</div>
+          <div class="swiper-button-next colors__arrow colors__arrow--right">{% render 'icons',icon:'arrow-greaterthan'%}</div>
         </div>
       </div> 
       <div class="colors__gallery">
@@ -36,11 +36,11 @@
                 {% for block in images_blocks %}
                   <div class="swiper-slide">
                     <div class="colors__gallery-image" data-option="{{ forloop.index }}">
-                      <picture>
-                        <source media="(max-width:639px)" srcset="{{block.settings.image_desk | img_url: 'master' }}">
-                        <source media="(min-width:640px)" srcset="{{block.settings.image_desk | img_url: 'master' }}">
-                        <img src="{{block.settings.image_desk | img_url: 'master' }}" alt="SS">
-                      </picture>
+                      <img 
+                      src="{{block.settings.image_desk | img_url: '10x' }}" 
+                      data-src="{{ block.settings.image_desk | img_url: 'master' }}"
+                      class="lazyload"
+                      alt="SS">
                     </div>
                   </div>
                 {% endfor %}

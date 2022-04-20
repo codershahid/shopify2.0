@@ -27,13 +27,17 @@ $component: '.intro';
 
 #{$component}__block--right{ 
    padding-right: 2rem;
-
+   
    @include above('tablet-large'){
       padding-right: 4rem;
    }
    &:not(:last-child){
       margin-bottom: 2rem;
    }
+}
+
+#{$component}__picture{
+   img{width: 100%;}
 }
 
 #{$component}__content{ 

@@ -2,21 +2,22 @@
   <div class="intro section__intro">
     <div class="intro__blocks">
       {% for block in section.blocks %}
-          <div class="intro__block 	{% if forloop.first == true %}intro__block--left{% else %}intro__block--right{% endif %}">
-              <picture class="intro__picture">
-                  <source media="(max-width:639px)" srcset="{{ block.settings.img_desk | img_url: 'master' }}">
-                  <source media="(min-width:640px)" srcset="{{ block.settings.img_desk | img_url: 'master' }}">
-                  <img src="{{ block.settings.img_desk | img_url: '1x' }}" alt="SS">
-              </picture>
-              <div class="intro__content">
-                  <h2 class="intro__heading">{{ block.settings.heading }}</h2>
-                  <p class="intro__copy">{{ block.settings.copy }}</p>
-                  <a href="{{ block.settings.cta_link }}" class="intro__cta btn btn-link">
-                      <span>{{ block.settings.cta }} </span>
-                      {% render 'icons',icon:'arrow-right--large'%}
-                  </a>
-              </div>
+        <div class="intro__block 	{% if forloop.first == true %}intro__block--left{% else %}intro__block--right{% endif %}">
+          <div class="intro__picture">
+              <img 
+              src="{{ block.settings.img_desk | img_url: '10x' }}"
+              data-src="{{ block.settings.img_desk | img_url: 'master' }}"
+              class="lazyload" alt="SS">
           </div>
+          <div class="intro__content">
+              <h2 class="intro__heading">{{ block.settings.heading }}</h2>
+              <p class="intro__copy">{{ block.settings.copy }}</p>
+              <a href="{{ block.settings.cta_link }}" class="intro__cta btn btn-link">
+                  <span>{{ block.settings.cta }} </span>
+                  {% render 'icons',icon:'arrow-right--large'%}
+              </a>
+          </div>
+        </div>
       {% endfor %}
      </div> 
      <div class="intro__script">{{ section.settings.bg_text }}</div>
