@@ -1,0 +1,175 @@
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+{% assign thumb_blocks = section.blocks | where: 'type', 'thumbs' %}
+{% assign images_blocks = section.blocks | where: 'type', 'gallery' %}
+
+<div class="wrapper__ls">
+  <div class="designer section__designer">
+
+    <div class="designer__head">
+      <h3 class="designer__title">{{ section.settings.section_title }}</h3>
+      <div class="designer__copy">{{ section.settings.section_copy }}</div>
+    </div>
+
+    <div class="designer__body">
+
+      <div class="designer__gallery">
+        <div class="swiper js_swiperImages">
+          <div class="swiper-wrapper">
+            {% for block in images_blocks %}
+              <div class="swiper-slide">
+                <div class="designer__gallery-inner">
+
+                  <div class="designer__gallery-image" data-option="{{ forloop.index }}">
+                    <img 
+                    src="{{block.settings.gallery_image | img_url: '10x' }}" 
+                    data-src="{{ block.settings.gallery_image | img_url: 'master' }}"
+                    class="lazyload"
+                    alt="SS">
+                  </div>
+
+                  <div class="designer__gallery-content">
+                    <div class="designer__gallery-title">{{ block.settings.gallery_title }}</div>
+                    <div class="designer__gallery-price">from <strong> {{ block.settings.gallery_price }}</strong> </div>
+                    <div class="designer__gallery-copy">{{ block.settings.gallery_copy }}</div>
+                    <div class="designer__gallery-author">{{ block.settings.gallery_author }}</div>
+                    <a href="#" class="btn btn-link designer__gallery-cta">
+                      <span>customize the product</span>
+                      {% render 'icons',icon:'arrow-right--large'%}
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="designer__thumbs">
+        <div class="swiper js_swiperThumbs">
+          <div class="swiper-wrapper">
+            {% for block in thumb_blocks %}
+              <div class="swiper swiper-slide">
+                <div class="designer__thumb" data-option="{{ forloop.index }}">
+                  <div class="designer__thumb-image"><img src="{{block.settings.thumb_image | img_url: 'master' }}" alt="SS"></div>
+                  <div class="designer__thumb-content">
+                    <div class="designer__thumb-count"><strong>{% if forloop.index > 1 %}{{ forloop.index | minus: 1}} {% else %} {{ forloop.index | plus: 2}} {% endif %} </strong> of 3</div>
+                    <div class="designer__thumb-action"><strong>next spotlight</strong></div>
+                    <div class="designer__thumb-title">{{ block.settings.thumb_title }}</div>
+                    <div class="designer__thumb-author">{{ block.settings.thumb_author }}</div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div> 
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"Designer",
+  "settings": [
+    {
+      "type": "html",
+      "id" : "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id" : "section_copy",
+      "label": "Section Copy",
+      "default": "From traditional to coastal to Palm Beach and beyond, our signature designs take on a whole new look in the hands of these talented designers."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "thumbs",
+      "name" : "Designer Thumbnails",
+      "settings" :[
+        {
+          "type":"image_picker",
+          "id" : "thumb_image",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "text",
+          "id" : "thumb_title",
+          "label": "Thumbnail Title",
+          "default": "Newport Grasscloth Console"
+        },
+        {
+          "type": "text",
+          "id" : "thumb_author",
+          "label": "Thumbnail author",
+          "default": "by Tori Robinson, TX"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "name" : "Designer Gallery Items",
+      "settings" :[
+        {
+          "type":"image_picker",
+          "id" : "gallery_image",
+          "label": "Gallery Image"
+        },
+        {
+          "type": "text",
+          "id" : "gallery_title",
+          "label": "Gallery Title",
+          "default": "Bobbie Wicker Ottoman"
+        },
+        {
+          "type": "text",
+          "id" : "gallery_price",
+          "label": "Gallery Price",
+          "default": "$1,858"
+        },
+        {
+          "type": "html",
+          "id" : "gallery_copy",
+          "label": "Gallery Copy"
+        },
+        {
+          "type": "text",
+          "id" : "gallery_author",
+          "label": "Gallery Author",
+          "default": "Ariel Okin, CT"
+        }
+      ]
+    }
+  ]
+} 
+{% endschema %} 
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+  
+  const swiperImages = new Swiper('.js_swiperImages', {
+    slidesPerView: 1,
+    slidesPerColumn: 1,
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    }
+  });
+  
+  const swiperThumbs = new Swiper('.js_swiperThumbs', {
+    slidesPerView: 2,
+    loop: true,
+    slideToClickedSlide: true,
+
+    thumbs: {
+      swiper: swiperImages,
+    },
+  });
+
+</script>
