@@ -16,13 +16,16 @@ import mobileNavigation from '../components/mobile-navigation';
 import deskNavigation from '../components/nav-desk';
 import headerSearch from '../components/header-search';
 import ajaxSearch from '../components/ajax-search';
+import collectionFilters from '../templates/collection';
 
 mobileNavigation()
 deskNavigation()
 headerSearch()
 ajaxSearch()
+collectionFilters()
 
 window.headerSearch.init();
 window.mobileNavigation.init();
 window.deskNavigation.init();
 window.ajaxSearch.init();
+window.collectionFilters.init();

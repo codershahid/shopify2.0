@@ -1,94 +1,102 @@
-{% comment %}
-  This page represents the /collections/* and /collections/all/* pages.
-{% endcomment %}
+{% assign collection_image = collection.image | img_url: 'master' %}
+{% assign collection_title = collection.title %}
+{% assign collection_description = collection.description %}
 
-{% section 'hero-collection' %}
 
-<section class="products-collection">
-  <div class="container">
-    {% paginate collection.products by 12 %}
-      <div class="grid-products">
-        {% for product in collection.products %}
-          <div class="product-thumbnail">
-            <div class="tagger"><img src="{{ 'popular.svg' | asset_url }}" alt="popular"></div>
-            {% if product.featured_image != blank %}
-            <a href="{{ product.url | within: collection }}" class="product-image">
-              {% include 'responsive-image' with image: product.featured_image, max_width: 767, max_height: 767 %}
+<section class="plp section__plp">
+<div class="plp__head">
+  <div class="wrapper__ls">
+    {% if collection_image %}
+    <picture class="plp__picture">
+      <source media="(max-width:639px)" srcset="{{ collection_image }}">
+      <source media="(min-width:640px)" srcset="{{ collection_image }}">
+      <img src="{{ collection_image }}">
+    </picture>
+  {% endif %}
+
+  <ul class="plp__breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/collections">collections</a></li>
+    <li><a href="{{ collection.url }}">{{ collection_title }}</a></li>
+  </ul>
+
+  <div class="plp__copy">
+    {% if collection_title %}
+      <h2 class="plp__title">{{ collection_title }}</h2>
+    {% endif %}
+
+    {% if collection_description %}
+      <p class="plp__description">{{ collection_description }}</p>
+    {% endif %}
+  </div>
+
+  </div>
+</div>
+<div class="plp__body">
+    <h3 class="js-poduct-count">5 products</h3>
+    <div class="plp__sort">
+      <span class="plp__sort-title">Sort by</span>
+      <div class="plp__sort-wrapper">
+        <select id="sort-by" class="plp__sort-select">
+          {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+          {% for option in collection.sort_options %}
+            <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+        <div class="plp__sort-arrow">{% render 'icons',icon:'arrow-down'%}</div>
+      </div>
+    </div>
+
+    <div class="plp__productMain">
+      <div class="plp__productWrapper">
+        <div class="plp__productGrid">
+          {% for product in collection.products %}
+          <div class="product">
+            <a href="{{ product.url }}">
+              <div class="product__image">
+                <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title }}">
+                <div class="product__atw">{% render 'icons',icon:'heart'%}</div>
+              </div>
+              <div class="product__meta">
+                <div class="product__title">{{ product.title }}</div>
+                <div class="product__price">{{ product.price | money }}</div>
+              </div>
             </a>
-            {% endif %}
-            <div class="row">
-              <div class="col">
-                <div class="product-title">
-                  <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-                </div>               
-              </div>
-              <div class="col">
-                <div class="product-price">
-                  {% if product.compare_at_price > product.price %}
-                    {% if product.price_varies %}
-                      {%- assign sale_price = product.price | money -%}
-                      {% comment %} {{ 'products.product.on_sale_from_html' | t: price: sale_price }} {% endcomment %}
-                    {% else %}
-                      {% comment %} {{ 'products.product.on_sale' | t }} {% endcomment %}
-                      <span class="sale-price">{{ product.price | money }}</span>
-                    {% endif %}
-                  {% else %}
-                    {% if product.price_varies %}
-                      {%- assign price = product.price | money -%}
-                      {% comment %} {{ 'products.product.from_text_html' | t: price: price }} {% endcomment %}
-                    {% else %}
-                      <span class="sale-price">{{ product.price | money }}</span>
-                    {% endif %}
-                  {% endif %}
-
-                  {% if product.compare_at_price > product.price %}
-                    {% comment %} <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span> {% endcomment %}
-                    <span class="regular-price">{{ product.compare_at_price | money }}</span>
-                  {% endif %}
-
-                  {% unless product.available %}
-                    {{ 'products.product.sold_out' | t }}
-                  {% endunless %}
-                </div>
-              </div>
-            </div>
-            <div class="thumb-footer">
-              <div class="row">
-                <div class="col"><div class="desc">{{ product.description }}</div></div>
-                <div class="col">
-                  <div class="btn-holder">
-                    <a href="{{ product.url | within: collection }}" class="btn btn-primary">SHOP NOW</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        {% else %}
-          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
-            {% for i in (1..8) %}
-            <a href="#"> 
-              {% capture current %}
-                {% cycle 1, 2, 3, 4, 5, 6 %}
-              {% endcapture %}
-              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-            </a>
-            <p>
-              <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
-            </p>
-            <p>
-              {{ 1999 | money }}
-            </p>
-            {% endfor %}
-          {% else %}
-            <p>{{ 'collections.general.no_matches' | t }}</p>
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
-      {% if paginate.pages > 1 %}
-      <div class="pagination">
-        {{ paginate | default_pagination }}
-      </div>
-      {% endif %}
-    {% endpaginate %}
+    </div>
+
   </div>
-  </div>
+</section>
+
+<script>
+// Shopify.queryParams = {};
+
+// // Preserve existing query parameters
+// if (location.search.length) {
+//   var params = location.search.substr(1).split('&');
+
+//   for (var i = 0; i < params.length; i++) {
+//     var keyValue = params[i].split('=');
+
+//     if (keyValue.length) {
+//       Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+//     }
+//   }
+// }
+
+// // Update sort_by query parameter on select change
+// document.querySelector('#sort-by').addEventListener('change', function(e) {
+//   var value = e.target.value;
+
+//   Shopify.queryParams.sort_by = value;
+//   location.search = new URLSearchParams(Shopify.queryParams).toString();
+// });
+</script>
+
+
