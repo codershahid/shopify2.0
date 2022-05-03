@@ -93,6 +93,9 @@ $component: '.plp';
   outline: none;
 }
 
+#{$component}__productWrapper{
+  padding: 2rem 0;
+}
 #{$component}__productGrid{
   text-align: center;
   @include above('mobile-large'){
@@ -106,6 +109,14 @@ $component: '.plp';
   @include above('tablet-large'){
     grid-template-columns: auto auto auto auto;
   }
+}
+
+#{$component}__load-more{
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin-top: 4rem;
+  margin: auto;
 }
 
 .product{
