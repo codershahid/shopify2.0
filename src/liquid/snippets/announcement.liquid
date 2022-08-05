@@ -1,22 +1,17 @@
-{% if section.settings.announcement_enabled %}
+{%- if section.settings.announcement_bar_enabled -%}
+<div class="announcement-bar">
+    {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+    {%- if section.settings.announcement_bar_link != blank -%}
     <div class="announcement">
-        <div class="announcement__col announcement__col--left">
-            <div class="announcement__message">
-                {% if section.settings.announcement_message %} 
-                    <p>{{ section.settings.announcement_message }} <a class="announcement__readmore" href="{{ section.settings.readmore_link }}">{{ section.settings.readmore_label }}</a>. </p>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="announcement__col announcement__col--right above768-only">
-            <div class="announcement__nav">
-                <ul class="announcement__navList">
-                    {% for link in linklists[section.settings.topbar_menu].links %}
-                        <li class="announcement__navItem"><a href="{{ link.url }}">{{ link.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {%- render 'topbar-icons' -%}
-        </div>
+        <a href="{{ section.settings.announcement_bar_link }}">
+            {{ section.settings.announcement_bar_text | escape }}
+        </a>
     </div>
-{% endif %}
+    {%- else -%}
+    <div class="announcement">
+        {{ section.settings.announcement_bar_text | escape }}
+    </div>
+    {%- endif -%}
+    {%- endif -%}
+</div>
+{%- endif -%}

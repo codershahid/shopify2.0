@@ -20,7 +20,8 @@ html {
 
 body {
   @include use-text-style('body');
-  color: color('black');
+
+  color: color('text');
 
   &.nav-open {
     height: 100vh;
@@ -28,64 +29,42 @@ body {
   }
 }
 
-// body,
-// input,
-// textarea,
-// button,
-// select {
-//   -webkit-font-smoothing: antialiased;
-//   text-size-adjust: 100%;
-// }
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: var(--berlingske-serif);
-    font-weight: var(--heading-weight); 
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
 }
 
-h1, .h1 {
+h1,
+h2,
+h3,
+h4 {
+  @include use-text-style('heading');
+  @include margin(null, null, size('small'), null);
+}
+
+h1 {
   @include use-text-style('heading-1');
 }
 
-h2, .h2{
+h2 {
   @include use-text-style('heading-2');
 }
 
-h3, .h3 {
+h3 {
   @include use-text-style('heading-3');
 }
 
-h4, .h4 {
+h4 {
   @include use-text-style('heading-4');
 }
 
-h5, .h5 {
-  @include use-text-style('heading-5');
-}
-
-h6, .h6 {
-  @include use-text-style('heading-6');
-}
-
-p{
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit; 
-}
-
-small{
-  @include use-text-style('small');
-}
-
-strong {
-  font-weight: 400;
-}
-
-.body2{
-  @include use-text-style('body2');
-}
-
-.caption{
-  @include use-text-style('caption');
+p {
+  @include use-text-style('paragraph');
+  @include margin(0, null, size('text'), null);
 }
 
 ol,
@@ -94,19 +73,18 @@ dl {
   @include margin(null, null, size('text'), null);
   @include padding(null, null, null, size('medium'));
   li {
-    @include use-text-style('body');
+    @include use-text-style('paragraph');
   }
 }
 
 a {
-  color: color('black');
-  text-decoration: none;
+  color: color('link');
+  text-decoration: underline;
   background-color: transparent; // Remove the gray background on active links in IE 10.
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
-  cursor: pointer;
 
   &:hover {
-    // color: color('link-hover');
+    color: color('link-hover');
   }
 }
 
@@ -122,5 +100,3 @@ table {
     vertical-align: top;
   }
 }
-
-

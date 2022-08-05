@@ -1,138 +1,113 @@
+/*
+ * Import style components for the current template.
+ *
+ * Write your own styles after imports.
+ *
+ * Design tokens are required and encapsulated for each template.
+ * Import it from the design-tokens folder.
+ */
+
 // Design tokens
 @import "./src/design-tokens/index";
 
-$component: '.plp';
+// Shared components
+@import './src/styles/components/shared/hero';
+@import "./src/styles/components/shared/collection-pagination";
 
-#{$component}{
-  padding-left: 4rem;
-  background-color: color('grey');
+.products-collection {
+  padding-top: 4rem;
 }
 
-#{$component}__head{
-  margin-bottom: 2rem;
-}
+.grid-products {
+  display: grid;
+  display: -ms-grid;
 
-#{$component}__picture{
-  display: block;
-}
+  @include grid-columns(size('gutter'), 1fr 1fr);
+  @include grid-rows(size('gutter'), auto);
+  @include grid-autoflow((autoflow: row, columns: 2, rows: 6, gap: both));
 
-#{$component}__breadcrumb{
-  display: block;
-  padding: 0;
-  margin: 1rem 0 0 0;
-
-  li{
-    display: inline-block;
-    font-size: .75rem;
-
-    &:not(:last-child)::after{
-      content: '>';
-      padding: 0 .3rem;
-    }
-
-    a{
-      font-size: .75rem;
-      line-height: 1rem;
-      letter-spacing: .00625rem;
-    }
+  @include below('tablet') {
+    @include grid-columns(size('gutter'), 1fr);
+    @include grid-autoflow((autoflow: row, columns: 1, rows: 6, gap: both));
   }
 }
 
-#{$component}__copy{
-  max-width: 40rem;
-  margin: 0 auto;
-}
-
-#{$component}__title{
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-#{$component}__description{
-  text-align: center;
-}
-
-#{$component}__body{
-  padding-right: 4rem;
-}
-
-#{$component}__sort{
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  width: max-content;
-  margin-bottom: 2rem;
-}
-
-#{$component}__sort-title{
-  margin-right: 1rem;
-}
-
-#{$component}__sort-wrapper{
+.product-thumbnail {
+  // @include padding(size('gutter'), null, null, null);
+  padding: size('gutter');
   position: relative;
-}
 
-#{$component}__sort-arrow{
-  position: absolute;
-  right: .5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1rem;
-}
+  .tagger {
+    width: 50px;
+    right: -10px;
+    top: -10px;
+    position: absolute;
 
-#{$component}__sort-select{
-  padding: 0.5625rem 1rem;
-  font-family: var(--body-text-medium);
-  font-weight: 500;
-  background-color: #fff;
-  border: 0.0625rem solid #000;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 11.5625rem;
-  outline: none;
-}
-
-#{$component}__productWrapper{
-  padding: 2rem 0;
-}
-#{$component}__productGrid{
-  text-align: center;
-  @include above('mobile-large'){
-    display: grid;
-    grid-gap: 2rem;
-    grid-template-columns: auto auto;
+    @include above('tablet-large') {
+      width: 70px;
+      right: -18px;
+      top: -18px;
+    }
   }
-  @include above('tablet'){
-    grid-template-columns: auto auto auto;
+
+  .product-image {
+    display: block;
+    .image {
+      width: 100%;
+    }
   }
-  @include above('tablet-large'){
-    grid-template-columns: auto auto auto auto;
+
+  .product-title {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    a {
+      color: color('text');
+      text-decoration: none;
+
+      @include above('tablet-large') {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+
+  .product-price {
+    margin-top: 0.5rem;
+
+    @include above('tablet-large') {
+      text-align: right;
+    }
+    .sale-price,
+    .regular-price {
+      font-weight: 600;
+    }
+    .regular-price {
+      color: color('red');
+      text-decoration: line-through;
+    }
+    a {
+      color: color('text');
+      text-decoration: none;
+    }
+  }
+
+  .thumb-footer {
+    margin-top: 1rem;
+    > .row {
+      align-items: flex-start;
+    }
+  }
+
+  .desc {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    > p {
+      font-size: 0.9rem;
+      color: #b3b3b3;
+    }
+  }
+
+  .btn-holder {
+    text-align: right;
   }
 }
-
-#{$component}__load-more{
-  display: flex;
-  align-items: center;
-  width: max-content;
-  margin-top: 4rem;
-  margin: auto;
-}
-
-.product{
-  background-color: color('white');
-}
-
-.product__image{
-  position: relative;
-}
-.product__atw{
-  position: absolute;
-  bottom: .3rem;
-  right: .3rem;
-}
-.product__meta{
-  padding: 1rem;
-}
-
-

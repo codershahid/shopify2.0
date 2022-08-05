@@ -2,7 +2,17 @@
 {% assign page = pages.homepage %}
 
 {% section 'hero' %}
-{% section 'introduction' %}
-{% section 'timeless' %}
-{% section 'endless-colors' %}
-{% section 'designer' %}
+<Test></Test>
+<div class="container">  
+  {{ page.content }}
+</div>
+
+{% include 'left-img-section' %}
+{% include 'right-img-section' %}
+
+<script id="test-data" type="application/json">
+  {
+    "id": "testID",
+    "name": "test"
+  }
+</script>

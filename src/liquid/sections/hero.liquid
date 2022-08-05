@@ -1,107 +1,29 @@
-{% assign sec = section.settings %}
-{% assign align = sec.content_align %}
-{% assign color = sec.overlay_color | color_to_rgb %}       
-{% assign opacity = sec.opacity %}       
-{% assign opacityWithEndBracket = ', ' | append: opacity | append: ')' %}       
-{% assign rgba = color | replace: 'rgb', 'rgba' | replace:')', opacityWithEndBracket %}
+{%- comment -%}
+This is NOT required section for the Shopify Theme Store.
+It will be avaiable from shopify store.
 
-<div class="hero  wrapper__ls">
-  <div class="hero__inner">
-    <a class="hero__overlay {% if sec.enable_overlay != blank %}hero__overlay--shown {% endif %}" href="https://www.shopsocietysocial.com/collections/new">
-      <picture class="hero__picture">
-        <source media="(max-width:639px)" srcset="{{ sec.image_mob | img_url: 'master' }}">
-        <source media="(min-width:640px)" srcset="{{ sec.image_desk | img_url: 'master' }}">
-        <img src="{{ sec.image_mob | img_url: '1x' }}" alt="SS">
-      </picture>
-    </a>
-    <div class="hero__content {% if align == 'left' %}hero__content--left{% elsif align == 'center' %}hero__content--center {% elsif align == 'right' %}hero__content--right {% endif %} ">
-      <div class="container hero__container">
-        <p class="hero__title caption">{{ sec.title }}</p>
-        <h2 class="hero__heading">{{ sec.heading }}</h2>
-        <div class="hero__btn">
-          <a href="#" class="btn btn-default hero__btn-link">
-            {%- render 'icons', icon:'btn-arrow' -%} 
-            <span class="hero__btn-text">SHOP NEW ARRIVALS</span>
-          </a>
+Theme Store required settings:
+
+
+Theme Store optional settings:
+
+{%- endcomment -%}
+<section class="cover front-page">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="cover-text">
+          <div class="reviews">+20,000 5-star reviews</div>
+          <h1 class="cover-heading">Add nature’s most powerful foods to your morning routine</h1>
+          <p class="lead text-muted">Get the lift you want and the balance you need with organic coffee and Lion’s Mane.</p>
+          <div class="btn-holder">
+            <a href="javascript:void(0);" class="btn btn-primary"> TRY MORNING ROUTINE</a>
+          </div>          
         </div>
+      </div>
+      <div class="col">
+        <div class="cover-image"></div>
       </div>
     </div>
   </div>
-</div>
-
-{% schema %}
-{
-  "name":"hero",
-  "settings":[
-    {
-      "type":"image_picker",
-      "id":"image_desk",
-      "label":"Desk Image"
-    },
-    {
-      "type":"image_picker",
-      "id":"image_mob",
-      "label":"Mobile Image"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_overlay",
-      "label": "Show overlay"
-    },
-    {
-      "type": "color",
-      "id": "overlay_color",
-      "label": "Overlay color",
-      "default": "#f00"
-    },
-    {
-      "type": "range",
-      "id": "opacity",
-      "label": "overlay opacity",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
-      "default": 0.2
-    },
-    {
-      "type":"text",
-      "id":"title",
-      "label":"Title Text",
-      "default":"A DESIGN DRIVEN DESTINATION"
-    },
-    {
-      "type":"html",
-      "id":"heading",
-      "label":"Heading Markup",
-      "default":"<strong>Inspired </strong>by the Classics"
-    },
-    {
-      "type": "select",
-      "id": "content_align",
-      "label": "Content Allignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    }
-  ]
-} 
-{% endschema %} 
-
-
-<style>
-  .hero__overlay:after{
-    background-color: {{rgba}}; s
-  }
-</style>
+</section>

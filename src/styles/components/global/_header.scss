@@ -1,57 +1,21 @@
-// @import 'header-login';
-// @import 'header-search';
-@import 'nav-mob';
-@import 'nav-desk';
+@import 'header-login';
+@import 'navigation';
+@import 'mobile-navigation';
+@import 'header-search';
 
-.header__wrapper{
-    position: fixed;
+.site-header {
+  @include padding(1rem, null, 1rem, null);
+
+  background-color: white;
+
+  .row {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+}
+.template-index {
+  .site-header {
+    position: absolute;
     width: 100%;
-    top: 0;
-    z-index: 2;
-    transition: top .5s ease;
-    transform: none;
-    background-color: #fff;
-}
-
-$component: '.header';
-
-#{$component}{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0.5rem;
-  transition: box-shadow .3s ease-out;
-  
-  @include above('mobile-large'){
-    padding: 0.75rem 1.25rem;
   }
-  
-  @include above('tablet'){
-    padding: 0.75rem 2.75rem;
-  }
-  
-  @include above('desktop'){
-    padding: 0 4rem;
-  }
-}
-
-#{$component}__menubar-toggler{
-  padding-right: 1rem;
-}
-
-#{$component}__logo{
-  margin-right: auto;
-  width: 138px;
-  
-  @include above(desktop){
-    width: 195px;
-  }
-}
-
-#{$component}__icons{
-  margin: 0 -0.5rem;
-}
-
-#{$component}__icon{
-  padding: 0 .5rem;
 }

@@ -183,12 +183,3 @@
     }
   }
 }
-
-// Convert pixel values to rem function.
-@function stripUnit($value) {
-  @return $value / ($value * 0 + 1);
-}
-
-@function rem($pxValue) {
-  @return #{stripUnit($pxValue) / stripUnit(size("root"))}rem;
-}

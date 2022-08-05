@@ -1,104 +1,18 @@
-$component: '.announcement';
+.announcement {
+  @include padding(0.8rem, null, 0.8rem, null);
 
-#{$component}{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.375rem .5rem;
-    background-color: #F1F6F7;
-    
-    @include above('mobile-large'){
-        padding: 0.375rem 1.25rem;
-    }
-    @include above('tablet'){
-        padding: 0.8125rem 2.75rem;
-    }
+  color: white;
+  background-color: color('primary');
+  text-align: center;
+  font-size: size(0.7rem);
 
-    @include above('desktop'){
-        padding: 0.8125rem 4rem;
-    }
-}
+  @include above('tablet-large') {
+    font-size: size(1rem);
+  }
 
-#{$component}__col{
-    display: flex;
-    align-items: center;
-}
-
-#{$component}__col--left{
-        @include above('tablet'){
-    }
-}
-
-#{$component}__col--right{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-#{$component}__message{
-    margin-right: 1rem;
-    text-transform: uppercase;
-    font-size: 8px;
-    line-height: .875rem;
-    letter-spacing: .09375rem;
-    color: color('black');
-
-    @include above('tablet'){
-        font-size: .625rem;
-    }
-}
-
-#{$component}__readmore{
-    letter-spacing: .5;
-    color: color('black');
-    text-decoration: underline;
-}
-
-#{$component}__nav{
-    @include above('desktop'){
-        margin-right: 3rem;
-    }
-}
-
-#{$component}__navList{
-    display: flex;  
-    padding: 0;
-    margin: 0;
-
-    & li{
-        list-style: none;
-        text-transform: capitalize;
-        font-size: 8px;
-        &:not(:last-child){margin-right: 1.5rem;}
-        
-        @include above('tablet'){
-            font-size: .75rem;
-        }
-    }
-
-    & a{
-        text-decoration: none;
-        color: color('black');
-    }
-}
-
-
-#{$component}__logos{
-    display: flex;
-}
-
-#{$component}__cross{
-    width: 16.97px;
-    margin-right: .5rem;
-}
-
-#{$component}__logo{
-    width: 138px;
-}
-
-#{$component}__icons{
-    margin: 0 -0.5rem;
-}
-#{$component}__icon{
-    padding: 0 .5rem;
+  a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }

@@ -3,7 +3,6 @@
  */
 
 // Core
-@import 'css-variables';
 @import 'typography';
 @import 'layout';
 @import 'forms';
@@ -13,69 +12,5 @@
 @import 'announcement';
 @import 'header';
 
-@import 'introduction';
-@import 'timeless';
-@import 'endless';
-@import 'designer';
-
 // Footer
 @import 'footer';
-
-
-.wrapper__ls{
-    max-width: 1920px;
-    margin: 0 auto;
-}
-
-.wrapper{
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-.above768-only{
-    display: none;
-    @include above('tablet'){display: inherit;}
-}
-
-.above1024-only{
-    display: none;
-    @include above('tablet-large'){display: inherit;}
-}
-
-.above1366-only{
-    display: none;
-    @include above('desktop'){display: inherit;}
-}
-
-.below768-only{
-    display: none;
-    @include below('tablet'){display: inherit;}
-}
-
-.below1024-only{
-    display: none;
-    @include below('tablet-large'){display: inherit;}
-}
-
-.below1366-only{
-    display: none;
-    @include below('desktop'){display: inherit;}
-}
-
-.container{
-    padding: 0 1.5rem;
-    width: 100%;
-    margin: 0 auto;
-
-    @include above('tablet'){
-        padding: 0 2.25rem;
-    }
-
-    @include above('tablet-large'){
-       padding: 0 2.75rem;
-    }
-
-    @include above('desktop'){
-       padding: 0 4rem;
-    }
-}
